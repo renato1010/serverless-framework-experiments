@@ -3,9 +3,7 @@ import type { AWS } from "@serverless/typescript";
 import { custom } from "@config/custom";
 import { resources } from "@config/resources";
 import { provider } from "@config/provider";
-import { hello } from "@functions/hello";
-import { getCity } from "@functions/get-city-info";
-import { generateUploadQr } from "@functions/create-and-upload-qrs";
+import { functionList } from "@functions/index";
 
 const serverlessConfiguration: AWS = {
   service: "aws-typescript-api",
@@ -13,7 +11,7 @@ const serverlessConfiguration: AWS = {
   plugins: ["serverless-esbuild", "serverless-s3-sync"],
   provider,
   // import the function via paths
-  functions: { hello, getCity, generateUploadQr },
+  functions: functionList,
   package: { individually: true },
   custom,
   resources,
