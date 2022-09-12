@@ -3,8 +3,8 @@ import type { AWS } from "@serverless/typescript";
 import { custom } from "@config/custom";
 import { resources } from "@config/resources";
 import { provider } from "@config/provider";
-import hello from "@functions/hello";
-import getCity from "@functions/get-city-info";
+import { hello } from "@functions/hello";
+import { getCity } from "@functions/get-city-info";
 
 const serverlessConfiguration: AWS = {
   service: "aws-typescript-api",

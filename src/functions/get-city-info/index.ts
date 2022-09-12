@@ -1,6 +1,8 @@
+import { AWS } from "@serverless/typescript";
 import { handlerPath } from "@libs/handler-resolver";
 
-export default {
+
+export const getCity:AWS["functions"]["getCity"] = {
   handler: `${handlerPath(__dirname)}/handler.getCity`,
   events: [
     {
