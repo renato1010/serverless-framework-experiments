@@ -13,7 +13,6 @@ const apiResponses: {
 async function lambdaHandler(
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> {
-  console.log({ queryParams: event.queryStringParameters });
   const city = event.queryStringParameters?.city;
   if (city == null || !cityData[city]) {
     return apiResponses._400({
@@ -23,6 +22,6 @@ async function lambdaHandler(
   return apiResponses._200(cityData[city]);
 }
 
-let getCity = middy(lambdaHandler);
+const getCity = middy(lambdaHandler);
 
 export { getCity };

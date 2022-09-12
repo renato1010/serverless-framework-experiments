@@ -10,14 +10,20 @@
     "node": ">=14.15.0"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.168.0",
     "@middy/core": "^2.5.3",
+    "@middy/http-error-handler": "^3.3.1",
     "@middy/http-json-body-parser": "^2.5.3",
+    "@middy/ssm": "^3.3.1",
+    "@middy/validator": "^3.3.1",
+    "qrcode": "^1.5.1",
     "serverless-s3-sync": "^3.0.0"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.0.0",
     "@types/aws-lambda": "^8.10.71",
     "@types/node": "^14.14.25",
+    "@types/qrcode": "^1.5.0",
     "esbuild": "^0.14.11",
     "json-schema-to-ts": "^1.5.0",
     "serverless": "^3.0.0",
