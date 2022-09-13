@@ -2,16 +2,16 @@ import * as React from "react";
 import { Page, View, Document, Text, renderToString, Image } from "@react-pdf/renderer";
 import { monthlyPayment } from "@libs/installments";
 import { styles } from "./styles";
+import type { BaseProduct } from "./types";
 
-const qrSrc = "https://qr-images-ptiontinetan.s3.us-east-2.amazonaws.com/qr-fakeId.png";
-const applianceSrc = "https://m.media-amazon.com/images/I/51DnRqKbpHL._AC_SX679_.jpg";
+type BaseDocumentProps = {
+  product: BaseProduct;
+  qrSrc: string;
+  applianceSrc: string;
+};
+
 // Create Document Component
-const BaseDocument = () => {
-  const product = {
-    name: "PRODUCT_NAME",
-    price: 9_000,
-    rate: 6,
-  };
+const BaseDocument = ({ product, qrSrc, applianceSrc }: BaseDocumentProps) => {
   return (
     <Document>
       <Page size="A5" style={styles.page}>
@@ -26,18 +26,19 @@ const BaseDocument = () => {
         </View>
         <View style={styles.bottom}>
           <Text style={styles.installmentsTxt}>Installments:</Text>
-          <Text>3 months: {`$${monthlyPayment(product.price, product.rate, 3)}`}</Text>
-          <Text>6 months: {`$${monthlyPayment(product.price, product.rate, 6)}`}</Text>
-          <Text>12 months: {`$${monthlyPayment(product.price, product.rate, 12)}`}</Text>
-          <Text>24 months: {`$${monthlyPayment(product.price, product.rate, 24)}`} </Text>
+          {[3, 6, 12, 24].map((val, i) => (
+            <Text style={{ ...styles.installmentRow, backgroundColor: i % 2 === 0 ? "#34d399" : "#a7f3d0" }}>
+              {val} months: {`${monthlyPayment(product.price, product.rate, val)}`}
+            </Text>
+          ))}
         </View>
       </Page>
     </Document>
   );
 };
 
-async function getPdfDoc() {
-  return await renderToString(<BaseDocument />);
+async function getPdfDoc(data: BaseDocumentProps) {
+  return await renderToString(<BaseDocument {...data} />);
 }
 
 export { getPdfDoc };
