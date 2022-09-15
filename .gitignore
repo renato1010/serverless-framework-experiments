@@ -8,4 +8,4 @@ jspm_packages
 # esbuild directories
 .esbuild
 
-qr-sync/
+qr_sync

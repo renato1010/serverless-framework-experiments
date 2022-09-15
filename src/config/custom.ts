@@ -15,7 +15,7 @@ const custom: AWS["custom"] = {
   s3Sync: [
     {
       bucketName: "${ssm:qr-bucket-name}",
-      localDir: "qr-sync",
+      localDir: "qr_sync",
       deleteRemoved: true,
       acl: "public-read",
     },
