@@ -4,11 +4,16 @@ This project has been generated using the `aws-nodejs-typescript` template from 
 
 For detailed instructions, please refer to the [documentation](https://www.serverless.com/framework/docs/providers/aws/).
 
+<br />
+<details>
+    <summary>Basic Set up</summary>
+<br />
+
 ## Installation/deployment instructions
 
 Depending on your preferred package manager, follow the instructions below to deploy your project.
 
-> **Requirements**: NodeJS `lts/fermium (v.14.15.0)`. If you're using [nvm](https://github.com/nvm-sh/nvm), run `nvm use` to ensure you're using the same Node version in local and in your lambda's runtime.
+> **Requirements**: NodeJS `lts/Gallium (v.16.17.0)`. I'm using [volta](https://volta.sh/), run `volta pin node@16` to ensure every time you work on this folder the version for node will be that(node 16.x) and you're using the same Node version in local and in your lambda's runtime(nodejs16).
 
 ### Using NPM
 
@@ -89,7 +94,26 @@ The project code base is mainly located within the `src` folder. This folder is 
 - [json-schema-to-ts](https://github.com/ThomasAribart/json-schema-to-ts) - uses JSON-Schema definitions used by API Gateway for HTTP request validation to statically generate TypeScript types in your lambda's handler code base
 - [middy](https://github.com/middyjs/middy) - middleware engine for Node.Js lambda. This template uses [http-json-body-parser](https://github.com/middyjs/middy/tree/master/packages/http-json-body-parser) to convert API Gateway `event.body` property, originally passed as a stringified JSON, to its corresponding parsed object
 - [@serverless/typescript](https://github.com/serverless/typescript) - provides up-to-date TypeScript definitions for your `serverless.ts` service file
+-
 
 ### Advanced usage
 
 Any tsconfig.json can be used, but if you do, set the environment variable `TS_NODE_CONFIG` for building the application, eg `TS_NODE_CONFIG=./tsconfig.app.json npx serverless webpack`
+
+</details>
+
+<br />
+
+### With this project we used `serverless.ts` so we have a configuration file as a typed TS object
+
+## Individual function description
+
+### hello & getCity are kind of boilerplate basic functionality just show the basic use of types for the handler.
+
+<br />
+
+- [generateUploadQr](docs/generateUploadQr.md)
+
+- [generatePDF](docs/generatePDF.md)
+
+- [publicMediaUpload](docs/publicMediaUpload.md)
